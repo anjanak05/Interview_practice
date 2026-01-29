@@ -55,16 +55,16 @@
 
 // console.log(arr)
 
-// const obj = {
-//   a: 1,
-//   b: {
-//     c: 2,
-//     d: {
-//       e: 3
-//     }
-//   },
-//   f: 4
-// };
+const obj = {
+  a: 1,
+  b: {
+    c: 2,
+    d: {
+      e: 3
+    }
+  },
+  f: 4
+};
 
 // function flat(obj, pKey="", res={}){
     
@@ -147,7 +147,7 @@ const arr6 = [1, [2, [3, 4]]]
 const float32Array = (arr6) => {
     return arr6.reduce((acc, curr) => {
         if (Array.isArray(curr)) {
-            acc = acc.concat(float32Array(curr))
+            acc.concat(float32Array(curr))
         } else {
             acc.push(curr)
         }
@@ -157,3 +157,18 @@ const float32Array = (arr6) => {
 }
 const r = float32Array(arr6)
  console.log("r", r)
+
+
+function flat2(obj, parentKey="", res={}) {
+    for (let key in obj) {
+        let finalKey = parentKey ? parentKey + "." + key : key;
+        if (typeof obj[key] === "object" && obj[key] !== null) {
+            flat2(obj[key], finalKey, res)
+        } else {
+            res[finalKey] = obj[key]
+        }
+    }
+    return res
+}
+const answer = flat2(obj)
+ console.log("adsc",answer)
