@@ -101,7 +101,6 @@ const obj = {
 
 
 
-// const arr = [1, 2, 2, 3, 3, 3, 4];
 
 // let res ={}
 
@@ -171,4 +170,13 @@ function flat2(obj, parentKey="", res={}) {
     return res
 }
 const answer = flat2(obj)
- console.log("adsc",answer)
+console.log("adsc", answer)
+ 
+const arr = [1, 2, 2,0,3,3,3,2,3,3,6, 3, 3, 3, 4];
+
+let objr = {}
+for (let i = 0; i < arr.length; i++){
+    let r = arr[i]
+    objr[r]  = (objr[r] || 0)+1
+}
+console.log("onjvv", objr)
